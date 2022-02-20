@@ -53,3 +53,8 @@ body {
     color: rgba(255, 255, 255, .75);
     font-size: 1.5rem;
 }
+
+.output .current-operand {
+    color: rgba(255, 255, 255, 1);
+    font-size: 2.5rem;
+}
