@@ -96,3 +96,8 @@ equalsButton.onclick = (button => {
     calculator.compute();
     calculator.updateDisplay();
 });
+
+allClearButton.onclick = (button => {
+    calculator.clear();
+    calculator.updateDisplay();
+});
