@@ -39,14 +39,37 @@ class Calculator {
     }
 
     compute() {
+        let computation;
+        const prev = parseFloat(this.previousOperand);
+        const current = parseFloat(this.currentOperand);
+        if (isNaN(prev) || isNaN(current)) return
 
+        switch (this.operation) {
+            case '+':
+                computation = prev + current
+                break;
+            case '-':
+                computation = prev - current
+                break;
+            case '*':
+                computation = prev * current
+                break;
+            case '÷':
+                computation = prev / current
+                break;
+            default:
+                return;
+        }
+        this.currentOperand = computation;
+        this.operation = undefined;
+        this.previousOperand = '';
     }
 
     updateDisplay() {
         this.currentOperandTextElement.innerText = this.currentOperand;
         this.previousOperandTextElement.innerText = this.previousOperand;
     }
-}
+};
 
 
 
@@ -60,11 +83,16 @@ numberButtons.forEach(button => {
         calculator.appendNumber(button.innerHTML);
         calculator.updateDisplay();
     }
-})
+});
 
 operationButtons.forEach(button => {
     button.onclick = () => {
         calculator.chooseOperation(button.innerHTML);
         calculator.updateDisplay();
     }
-})
+});
+
+equalsButton.onclick = (button => {
+    calculator.compute();
+    calculator.updateDisplay();
+});
