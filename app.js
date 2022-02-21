@@ -20,7 +20,7 @@ class Calculator {
     }
 
     delete() {
-
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
     appendNumber(number) {
@@ -92,12 +92,17 @@ operationButtons.forEach(button => {
     }
 });
 
-equalsButton.onclick = (button => {
+equalsButton.onclick = () => {
     calculator.compute();
     calculator.updateDisplay();
-});
+};
 
-allClearButton.onclick = (button => {
+allClearButton.onclick = () => {
     calculator.clear();
     calculator.updateDisplay();
-});
+};
+
+deleteButton.onclick = () => {
+    calculator.delete();
+    calculator.updateDisplay();
+};
